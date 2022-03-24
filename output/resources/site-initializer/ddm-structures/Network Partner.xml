@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<root>
-  <structure>
-    <name>Network-Partner</name>
-    <description/>
-    <definition><![CDATA[{"definitionSchemaVersion":"2.0","availableLanguageIds":["en_US"],"successPage":{"body":{},"title":{},"enabled":false},"defaultLanguageId":"en_US","fields":[{"labelAtStructureLevel":true,"hideField":false,"confirmationErrorMessage":{"en_US":""},"dataType":"string","tooltip":{"en_US":""},"readOnly":false,"requireConfirmation":false,"label":{"en_US":"Title"},"type":"text","showLabel":true,"required":false,"displayStyle":"singleline","indexType":"keyword","visibilityExpression":"","fieldNamespace":"","repeatable":false,"name":"Text84448261","localizable":true,"nativeField":false,"confirmationLabel":{"en_US":""},"fieldReference":"Text84448261","tip":{"en_US":""},"placeholder":{"en_US":""},"direction":["vertical"]},{"dataType":"image","readOnly":false,"label":{"en_US":"Logo"},"type":"image","showLabel":true,"required":true,"indexType":"text","visibilityExpression":"","fieldNamespace":"","repeatable":false,"requiredDescription":true,"name":"Image04657735","localizable":true,"fieldReference":"Logo","tip":{"en_US":""}}]}]]></definition>
-  </structure>
-</root>
