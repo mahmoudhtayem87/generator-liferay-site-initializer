@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US" version="1.0">
+	<dynamic-element index-type="keyword" instance-id="wwxjM8hp" name="Text38164730" type="text">
+		<dynamic-content language-id="en_US"><![CDATA[LIFE Insurances reports a Net Profit of 110.2 million in the first half of 2020]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element index-type="keyword" instance-id="zIsl9DbI" name="Text02948931" type="text">
+		<dynamic-content language-id="en_US"><![CDATA[LIFE Insurances Company, one of the leading insurance providers, announced it has posted a Net Profit of 110.2 million in the first half of 2020, a four percent increase on the same period last year while having increased its solvency above 250%. ]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element index-type="text" instance-id="GG2D7Ed2" name="Image04531602" type="image">
+		<dynamic-content language-id="en_US"><![CDATA[{"alt":"test","classNameId":41955,"description":"test","fileEntryId":"50703","groupId":"20123","height":541,"resourcePrimKey":"50693","title":"1H 2020 Financials.jpeg","type":"document","url":"\/documents\/20123\/0\/1H+2020+Financials.jpeg\/b18a0e95-34b1-8081-a384-bbce76e475c7?t=1643823184517&download=true","uuid":"b18a0e95-34b1-8081-a384-bbce76e475c7","width":1281}]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element index-type="text" instance-id="ghxudgN0" name="RichText19280742" type="rich_text">
+		<dynamic-content language-id="en_US"><![CDATA[<p>LIFE Insurances Company, one of the leading insurance providers, announced it has posted a Net Profit of&nbsp;110.2 million in the first half of 2020, a four percent increase on the same period last year while having increased its solvency above 250%.</p>
+
+<p>Total Gross Premium Written (GPW) at the end of 1H 2020 is&nbsp;2.1 Billion (+3% versus prior year) whilst the Net Investment Income increased 5% to&nbsp;57.6 Million.</p>
+
+<p>Jean-Louis Laurent Josi, CEO of Life Insurance, said, “We have passed the first half of a very challenging year with robust financial strength and strong operating performance. Our current results clearly reflect our leading position as a primary insurer amongst listed companies, which is in alignment with our strategy to better select risks and retain healthier risks on our balance sheet. We are also proud that, in the past months, we have accelerated payments to healthcare providers in order to support them during the peak of the pandemic while we also were the first to give discounts on motor insurance to take into account the decreased usage of cars during the confinement.”</p>
+
+<p>In addition, the strength of LIFE Insurances' balance sheet was also reflected by rating agencies. The US-based credit rating agency AM Best has revised Life Insurance’s outlook to stable from negative and affirmed its financial strength rating of ‘A’. The company is also rated ‘A2’ by Moody’s and ‘A-’ by Standard &amp; Poor’s.</p>]]></dynamic-content>
+	</dynamic-element>
+</root>

@@ -1,0 +1,29 @@
+<section class="section appoinment">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 ">
+                <div class="appoinment-content">
+									<lfr-editable id="form image" type="image" class="img-fluid">
+									<img src="images/about/img-3.jpg" alt="" class="img-fluid">
+									</lfr-editable>
+                  
+                    <div class="emergency">
+                        <h2 class="text-lg">
+													<i class="${configuration.icon} text-lg"></i><span data-lfr-editable-id="OverlayText" data-lfr-editable-type="text"></span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-10 ">
+                <div class="appoinment-wrap mt-5 mt-lg-0">
+                    <lfr-drop-zone></lfr-drop-zone>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+$(document).ready(function(){
+$(".lfr-ddm-form-pagination-controls>button").addClass("btn-main btn-round-full");
+});
+</script>

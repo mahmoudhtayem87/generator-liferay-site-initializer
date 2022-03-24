@@ -1,0 +1,29 @@
+<section class="section team py-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center">
+                    <h2 class="mb-4" data-lfr-editable-id="title" data-lfr-editable-type="text">Meet Our Staff</h2>
+                    <div class="divider mx-auto my-4"></div>
+                    <p data-lfr-editable-id="description" data-lfr-editable-type="text">Today’s users expect effortless experiences. Don’t let essential people and processes stay stuck
+                        in the past. Speed it up, skip the hassles</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="staff">
+           <lfr-drop-zone>
+
+           </lfr-drop-zone>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $(".staff>div").first().addClass("autofit-float autofit-row autofit-row-center autofit-padded-no-gutters-x d-flex");
+        $(".staff>div>div").each(function () {
+            $(this).attr("class", "");
+            $(this).addClass("autofit-col col-30 m-3 hvr-outline-in pointer autofit-col-expand");
+        });
+    });
+</script>

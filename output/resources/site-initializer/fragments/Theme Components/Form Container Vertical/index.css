@@ -1,0 +1,13 @@
+.contact-form .lfr-ddm__default-page-header
+{
+	display:none!important;
+}
+
+.contact-form .lfr-ddm-form-pagination-controls
+{
+	display:flex!important;
+}
+.contact-form .lfr-ddm-form-pagination-controls *
+{
+	margin:auto!important;
+}

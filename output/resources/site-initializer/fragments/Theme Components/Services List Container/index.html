@@ -1,0 +1,29 @@
+<section class="section service gray-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 text-center">
+                <div class="section-title">
+                    <h2 data-lfr-editable-id="Title" data-lfr-editable-type="text" class="text-primary">Award winning patient care</h2>
+                    <div class="divider mx-auto my-4"></div>
+                    <p data-lfr-editable-id="Description" data-lfr-editable-type="text" class="text-primary">
+                        Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt
+                        molestias nostrum laudantium. Maiores porro cumque quaerat.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="drop-zone-services">
+            <lfr-drop-zone></lfr-drop-zone>
+        </div>
+    </div>
+</section>
+
+<script>
+$(document).ready(function(){
+$(".drop-zone-services>div").addClass("autofit-float autofit-padded-no-gutters-x autofit-row");
+});
+	$(".drop-zone-services>div>div").each(function(){
+		$(this).attr("class","");
+	$(this).addClass("autofit-col autofit-col-expand service-col");
+	});
+</script>

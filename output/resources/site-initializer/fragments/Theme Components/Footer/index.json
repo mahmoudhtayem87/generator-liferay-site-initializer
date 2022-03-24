@@ -1,0 +1,31 @@
+{
+    "fieldSets": [
+        {
+            "fields": [
+							              
+							{
+                    "name": "navigationMenu",
+                    "label": "Navigation Menu ID",
+                    "type": "text",
+                    "typeOptions": {
+                        "placeholder": "Placeholder"
+                    },
+                    "dataType": "string",
+                    "defaultValue": "43042"
+                },
+							{
+                    "name": "navigationMenuTemplate",
+                    "label": "Navigation Menu Template ID",
+                    "description": "button-text",
+                    "type": "text",
+                    "typeOptions": {
+                        "placeholder": "Placeholder"
+                    },
+                    "dataType": "string",
+                    "defaultValue": "43025"
+                }
+                
+            ]
+        }
+    ]
+}

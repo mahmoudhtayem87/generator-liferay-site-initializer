@@ -1,0 +1,9 @@
+.appoinment .multi-step-indicator-label
+{
+	width:165px!important;
+	max-width: fit-content;
+}
+.appoinment .input-group-text
+{
+	height:100%!important;
+}

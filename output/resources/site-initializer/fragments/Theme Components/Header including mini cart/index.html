@@ -1,0 +1,91 @@
+<header class="custom-header" >
+    <div class="header-top-bar">
+        <div class="container">
+            <div class="autofit-float autofit-row autofit-row-center autofit-padded-no-gutters-x">
+                <div class="autofit-col d-flex">
+                    <ul class="top-bar-info list-inline-item pl-0 m-auto">
+                       
+                        <li class="list-inline-item">
+													<div class="w-100 d-flex">
+														<span class="company-name m-auto text-light">
+															${company.name}
+														</span>
+													</div>
+													</li>
+											
+                    </ul>
+                </div>
+                <div class="autofit-col-expand d-flex">
+									<div class="m-auto w-100">
+										<div class="w-50 m-auto">
+											 [@liferay.search_bar /]
+										</div>
+									</div>
+									 
+                </div>
+							<div class="autofit-col">
+								 <span class="nav-link taglib text-light"> [@liferay.languages /]</span>
+							</div>
+						<div class="autofit-col">
+								<span class="nav-link taglib py-0 d-flex sign-in"> [@liferay.user_personal_bar /]</span>
+							</div>
+							<div class="mini-cart-fragment ${fragmentEntryLinkNamespace}">
+	<style>
+		.${fragmentEntryLinkNamespace} {
+			--mini-cart-icon-color: ${configuration.iconColor};
+		}
+	</style>
+
+	[@liferay_commerce_ui["mini-cart"]
+		displayTotalItemsQuantity=configuration.displayTotalItemsQuantity
+		spritemap="${themeDisplay.getPathThemeImages()}/clay/icons.svg"
+		toggleable=true
+	/]
+</div>
+                
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navigation" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="${themeDisplay.getURLHome()}">
+                <img src="${htmlUtil.escape(themeDisplay.getCompanyLogo())}" alt="" style="max-height: 60px;"
+                    class="img-fluid">
+            </a>
+
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain"
+                aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icofont-navigation-menu"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarmain">
+                <ul class="navbar-nav ml-auto">
+                    [#attempt]
+                    [#assign navMenuID = configuration.navigationMenu?number]
+                    [#assign templateId = configuration.navigationMenuTemplate?number]
+                    [#assign ddmTemplateLocalService =
+                    serviceLocator.findService("com.liferay.dynamic.data.mapping.service.DDMTemplateLocalService")]
+                    [#assign template = ddmTemplateLocalService.fetchDDMTemplate(templateId)]
+                    [#assign siteNavigationMenuLocalService =
+                    serviceLocator.findService("com.liferay.site.navigation.service.SiteNavigationMenuLocalService")]
+                    [#assign navigationMenu = siteNavigationMenuLocalService.fetchSiteNavigationMenu(navMenuID)]
+                    [@liferay_site_navigation["navigation-menu"]
+                    ddmTemplateGroupId=template.groupId
+                    ddmTemplateKey=template.templateKey
+                    displayDepth=1
+                    expandedLevels="auto"
+                    rootItemType="absolute"
+                    rootItemLevel=0
+                    siteNavigationMenuId=navigationMenu.siteNavigationMenuId /]
+                    [#recover]
+                    <li class="nav-item">
+											<span class="nav-link">
+                            <small>Menu is temporarily unavailable.</small>
+											</span>
+									</li>
+                    [/#attempt]
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

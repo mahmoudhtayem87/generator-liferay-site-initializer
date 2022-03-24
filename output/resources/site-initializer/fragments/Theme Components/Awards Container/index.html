@@ -1,0 +1,28 @@
+<section class="section awards">
+    <div class="container">
+        <div class="autofit-float autofit-row autofit-row-center autofit-padded-no-gutters-x d-flex">
+            <div class="autofit-col d-flex col-40 d-flex">
+                <h2 class="title-color" data-lfr-editable-id="title" data-lfr-editable-type="text">
+                    Our 
+                    achievements 
+                </h2>
+                <div class="divider mt-4 mb-5 mb-lg-0 mb-auto"></div>
+            </div>
+            <div class="autofit-col d-flex col-60 d-flex">
+                <div class="awards-drop-zone w-100 m-auto">
+                    <lfr-drop-zone></lfr-drop-zone>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+	$(document).ready(function(){
+		$(".awards-drop-zone>div").addClass("autofit-float autofit-row autofit-row-center autofit-padded-no-gutters-x d-flex");
+		$(".awards-drop-zone>div>div").each(function(){
+			$(this).attr("class","");
+			$(this).addClass("autofit-col col-30 autofit-col-expand hvr-outline-in m-2");
+		});
+	});
+</script>

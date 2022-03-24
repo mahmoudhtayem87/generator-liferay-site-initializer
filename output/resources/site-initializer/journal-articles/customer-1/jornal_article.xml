@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US" version="1.0">
+	<dynamic-element index-type="text" instance-id="zariqakk" name="Message" type="text">
+		<dynamic-content language-id="en_US"><![CDATA[The action taken upon my request was quick and the allocation of a very good garage like AUTOTRUST was also a wise decision from your side. You guys really care for your clients. Thank you.]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element index-type="keyword" instance-id="nlhhzeoz" name="CustomerName" type="text">
+		<dynamic-content language-id="en_US"><![CDATA[John Doe]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element index-type="text" instance-id="iuiboahe" name="Image1j11" type="image">
+		<dynamic-content language-id="en_US"><![CDATA[{"alt":"png1","fileEntryId":"48399","groupId":"20123","name":"1.jpg","resourcePrimKey":38506,"title":"1.jpg","type":"journal","uuid":"e5d3a58c-7fa2-7a29-92ed-5f6cebe8a421"}]]></dynamic-content>
+	</dynamic-element>
+</root>

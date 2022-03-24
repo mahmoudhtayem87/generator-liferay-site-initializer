@@ -1,0 +1,28 @@
+.fragment_1001 {
+}
+footer .nav-item
+{
+	color:var(--light)!important;
+}
+
+footer a
+{
+	color:var(--light)!important;
+}
+footer a:hover
+{
+	color:var(--primary)!important;
+}
+footer .text-capitalize
+{
+	color:var(--light)!important;
+}
+footer span
+{
+	color:var(--light)!important;
+}
+footer .divider
+{
+	background:var(--primary)!important;
+	background-color:var(--primary)!important;
+}

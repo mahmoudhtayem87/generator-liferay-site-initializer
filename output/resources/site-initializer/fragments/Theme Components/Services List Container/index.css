@@ -1,0 +1,7 @@
+@media only screen and (min-width: 768px) {
+	.service-col
+	{
+		max-width:calc(100%/3)!important;
+	}
+ 
+}

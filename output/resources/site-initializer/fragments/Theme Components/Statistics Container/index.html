@@ -1,0 +1,16 @@
+<section  class="cta-section " >
+    <div  class="container">
+        <div data-lfr-background-image-id="bannerImage" class="cta position-relative counters">
+           <lfr-drop-zone></lfr-drop-zone>
+        </div>
+    </div>
+</section>
+
+<script>
+	$(document).ready(function(){
+		$(".counters>div").addClass("row");
+		$(".counters>div>div").each(function(){
+			$(this).addClass("autofit-col-expand");
+		});
+	});
+</script>

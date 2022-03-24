@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US" version="1.0">
+	<dynamic-element index-type="keyword" instance-id="Rej7RSfU" name="Text84448261" type="text">
+		<dynamic-content language-id="en_US"><![CDATA[Partner 1]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element index-type="text" instance-id="dTOjJeCB" name="Image04657735" type="image">
+		<dynamic-content language-id="en_US"><![CDATA[{"alt":"Partner 1","classNameId":41955,"description":"Partner 1","fileEntryId":"46589","groupId":"20123","height":255,"resourcePrimKey":"46602","title":"logorh1.jpeg","type":"document","url":"\/documents\/20123\/0\/logorh1.jpeg\/88876ebc-29f9-f274-862b-e748f4a2772f?t=1643721331718&download=true","uuid":"88876ebc-29f9-f274-862b-e748f4a2772f","width":800}]]></dynamic-content>
+	</dynamic-element>
+</root>

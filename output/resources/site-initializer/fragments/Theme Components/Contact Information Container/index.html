@@ -1,0 +1,14 @@
+<section class="section  contact-info pb-0">
+    <div class="container">
+        <lfr-drop-zone></lfr-drop-zone>
+    </div>
+</section>
+<script>
+	$(document).ready(function(){
+		$(".contact-info>div>div").addClass("row");
+		$(".contact-info>div>div>div").each(function(){
+			$(this).attr("class","");
+			$(this).addClass("autofit-col-expand mx-2 hvr-grow pointer");
+		});
+	});
+</script>

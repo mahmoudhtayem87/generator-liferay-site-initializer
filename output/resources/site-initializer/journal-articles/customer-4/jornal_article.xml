@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US" version="1.0">
+	<dynamic-element index-type="text" instance-id="vwtantlj" name="Message" type="text">
+		<dynamic-content language-id="en_US"><![CDATA[I have not faced any difficulty in reimbursing my filed reimbursement. No delays, no unnecessary cutting of dues. Received within the given time.]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element index-type="keyword" instance-id="jygkpyyi" name="CustomerName" type="text">
+		<dynamic-content language-id="en_US"><![CDATA[Melissa Kennedy]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element index-type="text" instance-id="qvsubtow" name="Image1j11" type="image">
+		<dynamic-content language-id="en_US"><![CDATA[{"alt":"12","fileEntryId":"48435","groupId":"20123","name":"4.jpeg","resourcePrimKey":38542,"title":"4.jpeg","type":"journal","uuid":"43566f16-9db0-530a-dd38-c4c9dc90481b"}]]></dynamic-content>
+	</dynamic-element>
+</root>

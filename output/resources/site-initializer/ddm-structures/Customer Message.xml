@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<root>
+  <structure>
+    <name>Customer-Message</name>
+    <description/>
+    <definition><![CDATA[{"definitionSchemaVersion":"2.0","availableLanguageIds":["en_US"],"successPage":{"body":{},"title":{},"enabled":false},"defaultLanguageId":"en_US","fields":[{"labelAtStructureLevel":false,"hideField":false,"confirmationErrorMessage":{},"dataType":"string","tooltip":{"en_US":""},"readOnly":false,"requireConfirmation":false,"label":{"en_US":"Message"},"type":"text","showLabel":true,"required":true,"displayStyle":"multiline","indexType":"text","visibilityExpression":"","fieldNamespace":"","repeatable":false,"name":"Message","localizable":true,"nativeField":false,"confirmationLabel":{},"fieldReference":"Message","tip":{"en_US":""},"placeholder":{"en_US":""},"direction":[]},{"labelAtStructureLevel":false,"hideField":false,"confirmationErrorMessage":{},"dataType":"string","tooltip":{"en_US":""},"readOnly":false,"requireConfirmation":false,"label":{"en_US":"Customer Name"},"type":"text","showLabel":true,"required":true,"displayStyle":"singleline","indexType":"keyword","visibilityExpression":"","fieldNamespace":"","repeatable":false,"name":"CustomerName","localizable":true,"nativeField":false,"confirmationLabel":{},"fieldReference":"CustomerName","tip":{"en_US":""},"placeholder":{"en_US":""},"direction":[]},{"dataType":"image","readOnly":false,"label":{"en_US":"Customer Avatar"},"type":"image","showLabel":true,"required":true,"indexType":"text","visibilityExpression":"","fieldNamespace":"","repeatable":false,"requiredDescription":true,"name":"Image1j11","localizable":true,"fieldReference":"Avatar","tip":{"en_US":""}}]}]]></definition>
+  </structure>
+</root>
