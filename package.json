@@ -1,8 +1,8 @@
 {
   "name": "generator-liferay-site-initializer",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
-  "homepage": "",
+  "homepage": "https://github.com/mahmoudhtayem87/generator-liferay-site-initializer",
   "author": {
     "name": "Mahmoud Hussein Tayem",
     "email": "mahmoud.tayem@liferay.com",
@@ -92,5 +92,5 @@
     "test": "jest"
   },
   "repository": "mahmoudhtayem87/generator-liferay-site-initializer",
-  "private": true
+  "private": false
 }
