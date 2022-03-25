@@ -17,6 +17,7 @@ async function start() {
     console.info(`No Commerce options found!`);
     return;
   }
+  console.log("Processing Commerce options");
   var optionsData = [];
   for (let index = 0; index < rows.items.length; index++) {
     const option = rows.items[index];

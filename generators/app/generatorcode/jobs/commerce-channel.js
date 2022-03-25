@@ -5,6 +5,7 @@
 const request = require('request');
 
 const config = require('../config');
+const commerceContext = require('../commerceContext');
 const helper = require('../helper');
 
 const rootDir = './output/resources/site-initializer';
@@ -29,10 +30,11 @@ async function start() {
 }
 
 async function getCommerceChannel() {
+    const url = `${config.config().liferay.host}/o/headless-commerce-admin-channel/v1.0/channels/${commerceContext.context().channelId}`;
     return new Promise(function (resolve, reject) {
         var options = {
           'method': 'GET',
-          'url': `${config.config().liferay.host}/o/headless-commerce-admin-channel/v1.0/channels/${config.config().commerceChannelId}`,
+          'url': url,
           'headers': {
             'Authorization': helper.getAuthHeader(config)
           }

@@ -6,6 +6,7 @@ const request = require('request');
 
 const applications = require('../services/applications');
 const config = require('../config');
+const commerceContext = require('../commerceContext');
 const helper = require('../helper');
 
 const rootDir = './output/resources/site-initializer/commerce-catalogs';
@@ -26,9 +27,13 @@ async function start() {
 async function processCatalog(element) {
   const catalogName = element.name.replace(/\s+/g, '-').toLowerCase() + '-commerce-catalog';
   console.log(`Processing ${catalogName}`);
+  commerceContext.addCatalog({
+    "id": element.id,
+    "name": element.name,
+    "filePrefix": catalogName,
+    "code": element.externalReferenceCode
+  });
   exportCatalog(catalogName, element);
-
-  //downloadProductImages(catalogName, element);
 }
 
 async function exportCatalog(catalogName, element) {
@@ -40,11 +45,6 @@ async function exportCatalog(catalogName, element) {
     "name": element.name
   };
   await helper.createFile(JSON.stringify(catalogData), rootDir, catalogName + ".json");
-}
-
-async function downloadProductImages(catalogName, element) {
-  await helper.checkFolder(`${rootDir}/${catalogName}`)
-  console.log(`${rootDir}/${catalogName}`);
 }
 
 module.exports = {

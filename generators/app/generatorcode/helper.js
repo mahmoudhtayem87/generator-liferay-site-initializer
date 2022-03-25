@@ -1,5 +1,22 @@
 const fs = require('fs');
 
+var builder = require('xmlbuilder');
+const {XMLParser} = require('fast-xml-parser');
+var xmldom = require('xmldom');
+var xpath = require('xpath');
+async function getNameTree(xml) {
+    var parser = new xmldom.DOMParser();
+    var root = parser.parseFromString(xml, 'text/xml');
+    var nodes = xpath.select('//Name', root);
+    titleObject = {};
+    for (var index = 0; index < nodes.length; index++) {
+        var language_key = nodes[index].getAttribute("language-id");
+        titleObject[language_key] = nodes[index].textContent;
+    }
+    return titleObject;
+}
+
+
 function getOffset(currentPage = 1, listPerPage) {
     return (currentPage - 1) * [listPerPage];
 }
@@ -36,5 +53,6 @@ module.exports = {
     replaceSpace,
     getAuthHeader,
     checkFolder,
-    createFile
+    createFile,
+    getNameTree
 }

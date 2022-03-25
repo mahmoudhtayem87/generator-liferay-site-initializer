@@ -6,6 +6,7 @@
 const _global = require('./global');
 const inquirer = require('inquirer');
 const config = require('./config');
+const commerceContext = require('./commerceContext');
 const start = require('./jobs/start');
 const docs = require('./jobs/documents');
 
@@ -69,7 +70,7 @@ async function selectCommerceChannel() {
         },
     ]).then(respo => {
         var channel = ChannelMap.filter(channel => channel.value === respo.name)[0];
-        config.setCommereChannel(channel.id);
+        commerceContext.setup(channel.id);
         start.start();
     });
 }
@@ -94,6 +95,7 @@ async function setup() {
     });
 
 }
+
 
 module.exports = {
   setup

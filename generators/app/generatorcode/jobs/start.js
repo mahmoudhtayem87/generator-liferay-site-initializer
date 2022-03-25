@@ -11,13 +11,26 @@ const vocabularies = require('./vocabularies');
 const channel = require('./commerce-channel');
 const catalogs = require('./commerce-catalogs');
 const commerceOptions = require('./commerce-options');
+const commerceWarehoses = require('./commerce-inventory-warehouses');
 const fragments = require('./fragments');
 const widget = require('./widgetTemplate.js');
 const applications = require('../services/applications');
+const accounts = require("./accounts");
 const config = require('../config');
+const roles = require("./roles");
+const usersAccounts = require('./useraccounts');
+const siteConfig = require('./siteconfiguration');
+const navMenus = require('./navigationmenus');
+const sap = require('./serviceaccesspolicies');
 async function start() {
 
     await setupUserInformation();
+    sap.start();
+    navMenus.start();
+    roles.start();
+    siteConfig.start();
+    usersAccounts.start();
+    accounts.start();
     widget.start();
     layout.start();
     thumbnail.start();
@@ -26,8 +39,9 @@ async function start() {
     documents.start();
     fragments.start();
     channel.start();
-    catalogs.start();
     commerceOptions.start();
+    commerceWarehoses.start();
+    catalogs.start();
 }
 async function setupUserInformation() {
     var currentAccount = await applications.getMyUser();
