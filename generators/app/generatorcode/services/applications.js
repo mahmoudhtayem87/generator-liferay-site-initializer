@@ -448,6 +448,44 @@ async function getCommerceOptions() {
     });
   }
 }
+async function getLayoutDefinition(pageUrl) {
+  var url = `${config.config().liferay.host}/o/headless-delivery/v1.0/sites/${config.config().siteId}/site-pages/${pageUrl}`;
+  return new Promise(function (resolve, reject) {
+    var options = {
+      'method': 'GET',
+      'url': url,
+      'headers': {
+        'Authorization': "Basic " + new Buffer.from(config.config().liferay.user
+            + ":" + config.config().liferay.password).toString("base64")
+      }
+    };
+    request(options, function (error, response) {
+      if (error) {
+        reject(error)
+      };
+      resolve(JSON.parse(response.body));
+    });
+  });
+}
+async function getLayoutDefinition(pageUrl) {
+  var url = `${config.config().liferay.host}/o/headless-delivery/v1.0/sites/${config.config().siteId}/site-pages/${pageUrl}`;
+  return new Promise(function (resolve, reject) {
+    var options = {
+      'method': 'GET',
+      'url': url,
+      'headers': {
+        'Authorization': "Basic " + new Buffer.from(config.config().liferay.user
+            + ":" + config.config().liferay.password).toString("base64")
+      }
+    };
+    request(options, function (error, response) {
+      if (error) {
+        reject(error)
+      };
+      resolve(JSON.parse(response.body));
+    });
+  });
+}
 module.exports = {
   getContentStructures,
   getRootDocuments,
@@ -471,5 +509,6 @@ module.exports = {
   getCommerceOptions,
   getCategories,
   getSubCategories,
-  getLayouts
+  getLayouts,
+  getLayoutDefinition
 }

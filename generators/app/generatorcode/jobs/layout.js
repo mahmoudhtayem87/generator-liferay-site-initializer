@@ -1,6 +1,6 @@
 /**
  * @author Mahmoud Hussein Tayem
- * @description this job is used to pull all of the site widget display templates and 
+ * @description this job is used to pull all of the site widget display templates and
  * store them in the site initializer required format
  */
 var xmldom = require('xmldom');
@@ -13,43 +13,30 @@ const config = require('../config');
 const helper = require('../helper');
 fs = require('fs');
 var builder = require('xmlbuilder');
-const { XMLParser } = require('fast-xml-parser');
+const {XMLParser} = require('fast-xml-parser');
 
-async function processWidget(element) {
-    console.log(`Processing Widget ${element.nameCurrentValue}!`);
-    var collectionDir = `${dir}/${helper.replaceSpace(element.nameCurrentValue)}`;
-    await checkSubFolder(collectionDir);
-
-    var widget_Info = {
-        "className": (await applications.getResourceClassName(element.classNameId)).value,
-        "ddmTemplateKey": element.templateKey,
-        "name": element.nameCurrentValue,
-        "resourceClassName": (await applications.getResourceClassName(element.resourceClassNameId)).value
-    };
-    createFile(element.script, `/${helper.replaceSpace(element.nameCurrentValue)}/ddm-template.ftl`);
-    createFile(JSON.stringify(widget_Info), `/${helper.replaceSpace(element.nameCurrentValue)}/ddm-template.json`);
-
-}
 async function createFile(filedata, filename) {
     if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
+        fs.mkdirSync(dir, {recursive: true});
     }
     fs.writeFile(`${dir}/${filename}`, filedata.toString(), function (err) {
         if (err) return console.error(err);
     });
 }
+
 async function checkFolder() {
     if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
+        fs.mkdirSync(dir, {recursive: true});
     }
 }
+
 async function checkSubFolder(dir) {
     if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
+        fs.mkdirSync(dir, {recursive: true});
     }
 }
-async function getLayoutNameTree(xml)
-{
+
+async function getLayoutNameTree(xml) {
     var parser = new xmldom.DOMParser();
     var root = parser.parseFromString(xml, 'text/xml');
     var nodes = xpath.select('//Name', root);
@@ -60,35 +47,45 @@ async function getLayoutNameTree(xml)
     }
     return titleObject;
 }
-async function getLayoutTypeSettings(settings)
-{
+
+async function getLayoutTypeSettings(settings) {
     var typeSettingsList = settings.split("\n");
-    var settings = [] ;
-    for(var index = 0 ; index < typeSettingsList.length -1 ; index++)
-    {
+    var settings = [];
+    for (var index = 0; index < typeSettingsList.length - 1; index++) {
         var typeSettingsParts = typeSettingsList[index].split("=");
         settings.push({
-            key:typeSettingsParts[0],
+            key: typeSettingsParts[0],
             value: typeSettingsParts[1]
         });
     }
     return settings;
 }
+
 async function processLayout(element) {
     var layoutFolder = `${helper.replaceSpace(element.nameCurrentValue)}`;
     await checkSubFolder(`${dir}/${layoutFolder}`);
-    var page_json = {
-        "hidden": element.hidden,
-        "name_i18n": await getLayoutNameTree(element.name),
-        "private": element.privateLayout,
-        "system": element.system,
-        "type": `${element.type}`,
-        "typeSettings": await getLayoutTypeSettings(element.typeSettings)
-    };
-    getLayoutTypeSettings(element.typeSettings);
-    await createFile(JSON.stringify(page_json), `${layoutFolder}/page.json`)
+    console.info(`Processing page ${element.nameCurrentValue}`);
+    try {
+        var page_json = {
+            "hidden": element.hidden,
+            "name_i18n": await getLayoutNameTree(element.name),
+            "private": element.privateLayout,
+            "system": element.system,
+            "type": `${element.type}`,
+            "typeSettings": await getLayoutTypeSettings(element.typeSettings)
+        };
+        var page_definition_full = await applications.getLayoutDefinition(element.friendlyURL);
+        var page_definition = JSON.stringify(page_definition_full.pageDefinition);
+        getLayoutTypeSettings(element.typeSettings);
+        await createFile(JSON.stringify(page_json), `${layoutFolder}/page-definition.json`);
+        await createFile(page_definition, `${layoutFolder}/page.json`);
+    } catch (exp) {
+        console.error(`Error while processing page ${element.nameCurrentValue}`);
+    }
+
 
 }
+
 async function processPrivatePages() {
     var rows = await applications.getLayouts(true);
 
@@ -101,6 +98,7 @@ async function processPrivatePages() {
         processLayout(rows[index]);
     }
 }
+
 async function processPublicPages() {
     var rows = await applications.getLayouts(false);
 

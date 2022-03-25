@@ -1,6 +1,6 @@
 /**
  * @author Mahmoud Hussein Tayem
- * @description a simple questionnaire  will be triggered once this file is executed 
+ * @description a simple questionnaire  will be triggered once this file is executed
  * to get the required configurations from the end user to connect to liferay
  */
 const _global = require('./global');
@@ -96,5 +96,5 @@ async function setup() {
 }
 
 module.exports = {
-    setup
-  }
+  setup
+}
