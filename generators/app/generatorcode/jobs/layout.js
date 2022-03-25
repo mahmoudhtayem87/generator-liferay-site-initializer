@@ -1,6 +1,6 @@
 /**
  * @author Mahmoud Hussein Tayem
- * @description this job is used to pull all of the site widget display templates and
+ * @description this job is used to pull all of the site pages (public and private) and
  * store them in the site initializer required format
  */
 var xmldom = require('xmldom');
