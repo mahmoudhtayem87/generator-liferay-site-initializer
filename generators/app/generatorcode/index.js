@@ -42,60 +42,80 @@ async function selectSite() {
         var site = SitesMap.filter(site => site.value === respo.groupId)[0];
         config.setSiteId(site.groupId);
         config.setFriendlyUrlPath(site.friendlyUrlPath);
-        selectCommerceChannel();
+        if (config.config().exportCommerce) {
+            selectCommerceChannel();
+        } else {
+            start.start();
+        }
     });
 }
 
 async function selectCommerceChannel() {
-    var ChannelMap = [];
-    var channels = await applications.getCommerceChannels();
-    var _choices = [];
-    var char = 'A';
-    for (index = 0; index < channels.length; index++) {
-        var choice = channels[index].name;
-        ChannelMap.push({
-            key: char,
-            id: channels[index].id,
-            value: channels[index].name,
+    try {
+        var ChannelMap = [];
+        var channels = await applications.getCommerceChannels();
+        var _choices = [];
+        var char = 'A';
+        for (index = 0; index < channels.length; index++) {
+            var choice = channels[index].name;
+            ChannelMap.push({
+                key: char,
+                id: channels[index].id,
+                value: channels[index].name,
+            });
+            _choices.push(choice);
+            char = String.fromCharCode(char.charCodeAt(char.length - 1) + 1);
+        }
+        inquirer.prompt([
+            {
+                type: 'list',
+                name: 'name',
+                message: 'Which channel you are trying to export?',
+                choices: _choices,
+            },
+        ]).then(respo => {
+            var channel = ChannelMap.filter(channel => channel.value === respo.name)[0];
+            commerceContext.setup(channel.id);
+            start.start();
         });
-        _choices.push(choice);
-        char = String.fromCharCode(char.charCodeAt(char.length - 1) + 1);
-    }
-    inquirer.prompt([
-        {
-            type: 'list',
-            name: 'name',
-            message: 'Which channel you are trying to export?',
-            choices: _choices,
-        },
-    ]).then(respo => {
-        var channel = ChannelMap.filter(channel => channel.value === respo.name)[0];
-        commerceContext.setup(channel.id);
+    } catch (ex) {
+        console.error("Unable to get list of Commerce channels");
+        config.setExportCommerce(false);
         start.start();
-    });
+    }
 }
 async function setup() {
     inquirer.prompt([
         {
             name: 'LRHost',
             message: 'What is your Liferay Portal URL?',
-            default: 'http://localhost:8080'
+            default: config.config().liferay.host
         }, {
             name: 'LRUser',
             message: 'What is your Liferay Portal admin user?',
-            default: 'admin@lifeinsurances.com'
+            default: config.config().liferay.user
         }, {
             name: 'LRPassword',
             message: 'What is your Liferay Portal admin password?',
-            default: 'L1feray$'
+            default: config.config().liferay.password,
+            type: 'password'
+        }, {
+            name: 'GenerateThumbnail',
+            message: 'Would you like to generate a thumnbnail image?',
+            default: true,
+            type: 'confirm'
+        }, {
+            name: 'exportCommerce',
+            message: 'Would you like to export Commerce?',
+            default: true,
+            type: 'confirm'
         }
     ]).then(answers => {
-        config.setup(answers.LRHost, answers.LRUser, answers.LRPassword);
+        config.setup(answers.LRHost, answers.LRUser, answers.LRPassword,answers.GenerateThumbnail,answers.exportCommerce);
         selectSite();
     });
 
 }
-
 
 module.exports = {
   setup

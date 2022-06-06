@@ -29,16 +29,11 @@ async function start() {
       "key": option.key,
       "required": option.required,
       "skuContributor": option.skuContributor,
-      "name": await getLocalizedValue(option.name),
+      "name": await helper.getLocalizedValue(option.name),
       "values": optionValues
     });
   }
   await helper.createFile(JSON.stringify(optionsData), rootDir, "commerce-options.json");
-}
-
-async function getLocalizedValue(value) {
-  const defaultLanguageId = config.config().defaultLanguageId;
-  return value[defaultLanguageId] ? value[defaultLanguageId] : '';
 }
 
 async function getOptionValues(opionId) {
@@ -69,7 +64,7 @@ async function getOptionValues(opionId) {
     optionValues.push({
       "externalReferenceCode": element.externalReferenceCode,
       "key": element.key,
-      "name": await getLocalizedValue(element.name),
+      "name": await helper.getLocalizedValue(element.name),
       "priority": element.priority
     });
   }

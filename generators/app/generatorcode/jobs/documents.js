@@ -3,8 +3,6 @@
  * @description this job is used to pull all of the site documents and media 
  * into the site initializer required format, this include the folders and sub folders
  */
-const Axios = require('axios').default;
-var request = require('request');
 var dir = './output/resources/site-initializer/documents/group';
 const applications = require('../services/applications');
 const config = require('../config');
@@ -17,7 +15,7 @@ async function processSubFolderFile(element, basePath) {
   fileName = fileName.indexOf('.') === -1?`${fileName}.${element.fileExtension}`:fileName;
   fileName=`${basePath}/${fileName}`
   try {
-    await downloadFile(`${config.config().liferay.host}/${element.contentUrl}`, `${fileName}`)
+    await helper.downloadFile(`${config.config().liferay.host}/${element.contentUrl}`, `${fileName}`)
   } catch (exp) {
     fs.unlink(`${fileName}`, function (err) {
       if (err) throw err;
@@ -29,7 +27,7 @@ async function processFile(element) {
   var fileName = `${dir}/${element.title}`;
   fileName = fileName.indexOf('.') == -1?`${fileName}.${element.fileExtension}`:fileName;
   try {
-    await downloadFile(`${config.config().liferay.host}/${element.contentUrl}`, `${fileName}`)
+    await helper.downloadFile(`${config.config().liferay.host}/${element.contentUrl}`, `${fileName}`)
   } catch (exp) {
     fs.unlink(`${fileName}`, function (err) {
       if (err) throw err;
@@ -52,29 +50,6 @@ async function start() {
   }
 }
 
-async function downloadFile(fileUrl, outputLocationPath) {
-  const writer = fs.createWriteStream(outputLocationPath);
-  return Axios({
-    method: 'get',
-    url: fileUrl,
-    responseType: 'stream',
-  }).then(response => {
-    return new Promise((resolve, reject) => {
-      response.data.pipe(writer);
-      let error = null;
-      writer.on('error', err => {
-        error = err;
-        writer.close();
-        reject(err);
-      });
-      writer.on('close', () => {
-        if (!error) {
-          resolve(true);
-        }
-      });
-    });
-  });
-}
 async function processRootFolders() {
   var basePath = dir;
   var rootFolders = (await applications.getRootFolders()).items;

@@ -12,6 +12,7 @@ const channel = require('./commerce-channel');
 const catalogs = require('./commerce-catalogs');
 const commerceOptions = require('./commerce-options');
 const commerceWarehoses = require('./commerce-inventory-warehouses');
+const products = require('./commerce-products');
 const fragments = require('./fragments');
 const widget = require('./widgetTemplate.js');
 const applications = require('../services/applications');
@@ -22,10 +23,20 @@ const usersAccounts = require('./useraccounts');
 const siteConfig = require('./siteconfiguration');
 const navMenus = require('./navigationmenus');
 const sap = require('./serviceaccesspolicies');
+const buildfiles = require('./buildfiles');
+const picklists = require('./picklists');
+const objects = require('./objects');
 async function start() {
 
     await setupUserInformation();
+
+    const cfg = config.config();
+
+    buildfiles.start();
+
     sap.start();
+    objects.start();
+    picklists.start();
     navMenus.start();
     roles.start();
     siteConfig.start();
@@ -33,19 +44,27 @@ async function start() {
     accounts.start();
     widget.start();
     layout.start();
-    thumbnail.start();
+
+    if (cfg.generateThumbnail) {
+        thumbnail.start();
+    }
+    
     vocabularies.start();
     webcontent.start();
     documents.start();
     fragments.start();
-    channel.start();
-    commerceOptions.start();
-    commerceWarehoses.start();
-    catalogs.start();
+
+    if (cfg.exportCommerce) {
+        channel.start();
+        commerceOptions.start();
+        await commerceWarehoses.start();
+        await catalogs.start();
+        products.start();
+    }
 }
 async function setupUserInformation() {
-    var currentAccount = await applications.getMyUser();
-    var userAccount = await applications.getUserAccountJSONAPIs(currentAccount.id);
+    const currentAccount = await applications.getMyUser();
+    const userAccount = await applications.getUserAccountJSONAPIs(currentAccount.id);
     config.setUserId(currentAccount.id);
     config.setCompanyId(userAccount.companyId);
     config.setDefaultLanguage(userAccount.languageId);

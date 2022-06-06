@@ -1,23 +1,10 @@
 const config = require('../config');
+const helper = require('../helper');
 const applications = require('../services/applications');
 var dir = './output/resources/site-initializer/taxonomy-vocabularies/group';
 
 //http://localhost:8080/o/api?endpoint=http://localhost:8080/o/headless-admin-taxonomy/v1.0/openapi.json
 
-
-async function createFolder(dir) {
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-}
-async function createFile(filedata, filename, dir) {
-    if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-    }
-    fs.writeFile(`${dir}/${filename}`, filedata, function (err) {
-        if (err) return console.error(err);
-    });
-}
 async function createVocabulary(vocabulary) {
 
     const vocabularyDir = dir + "/" + vocabulary.name.toLowerCase();
@@ -29,8 +16,8 @@ async function createVocabulary(vocabulary) {
         "viewableBy": "Anyone"
     };
 
-    await createFile(JSON.stringify(vocJson), vocabulary.name.toLowerCase() + ".json",dir);
-    await createFolder(vocabularyDir);
+    await helper.createFile(JSON.stringify(vocJson),dir,vocabulary.name.toLowerCase() + ".json");
+    await helper.checkFolder(vocabularyDir);
     await createCategories(vocabularyDir,vocabulary.id);
 }
 async function createCategory(dir, parentCatId) {
@@ -46,7 +33,7 @@ async function processCategories(dir, data) {
         const category = data.items[index];
         if (category.numberOfTaxonomyCategories > 0) {
             const catDir = dir + "/" + category.name;
-            await createFolder(catDir);
+            await helper.checkFolder(catDir);
             createCategory(catDir,category.id);
         }
 
@@ -56,21 +43,19 @@ async function processCategories(dir, data) {
             "name": category.name,
             "viewableBy": "Anyone"
         };
-        createFile(JSON.stringify(categoryJson), category.name + ".json",dir);
+        helper.createFile(JSON.stringify(categoryJson),dir,category.name + ".json");
     }
 }
 async function start() {
     console.log('Creating vocabularies');
-    await createFolder(dir);
+    await helper.checkFolder(dir);
     var data = await applications.getVocabularies();
 
     //loop items and create json file and folder
     for (let index = 0; index < data.items.length; index++) {
         const vocabulary = data.items[index];
-        await createVocabulary(vocabulary);
-        
+        await createVocabulary(vocabulary);        
     }
-
 }
 
 module.exports = {

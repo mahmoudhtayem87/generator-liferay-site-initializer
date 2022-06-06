@@ -77,8 +77,8 @@ async function processLayout(element) {
         var page_definition_full = await applications.getLayoutDefinition(element.friendlyURL);
         var page_definition = JSON.stringify(page_definition_full.pageDefinition);
         getLayoutTypeSettings(element.typeSettings);
-        await createFile(JSON.stringify(page_json), `${layoutFolder}/page-definition.json`);
-        await createFile(page_definition, `${layoutFolder}/page.json`);
+        await createFile(JSON.stringify(page_json), `${layoutFolder}/page.json`);
+        await createFile(page_definition, `${layoutFolder}/page-definition.json`);
     } catch (exp) {
         console.error(`Error while processing page ${element.nameCurrentValue}`);
     }
@@ -103,7 +103,7 @@ async function processPublicPages() {
     var rows = await applications.getLayouts(false);
 
     if (rows == null || rows == null || rows.length <= 0) {
-        console.info(`No Private Pages found!`);
+        console.info(`No Public Pages found!`);
         return;
     }
     for (let index = 0; index < rows.length; index++) {
